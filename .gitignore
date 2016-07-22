@@ -1,0 +1,5 @@
+*.pyc
+app/__pycache__/
+
+flask/
+.DS_Store
