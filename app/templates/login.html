@@ -1,10 +1,30 @@
 {% extends "base.html" %}
 
 {% block content%}
+
+<script type="text/javascript">
+// todo: put the weird js call in the <a> here with an eventlistener
+// take that weird prompt out and replace with an injected input field
+  function set_openid(openid, pr) {
+    var u = openid.search('<username>');
+    if (u != -1) {
+      var user = prompt('Enter your ' + pr + ' username:');
+      var openid = openid.substr(0, u) + user;
+    }
+    var inputs = document.querySelector('#loginForm').elements;
+    inputs['openid'].value = openid;
+  }
+</script>
+
 <h1>Sign In</h1>
-<form action="" method="post" name="login">
+<form action="" method="post" name="login" id="loginForm">
   {{ form.hidden_tag() }}
-  <p>Please enter your OpenID: </p>
+  <p>Please enter your OpenID, or select one of the providers below: </p>
+  <p>
+    {% for pr in providers %}
+    <a href="javascript:set_openid('{{ pr.url }}', '{{ pr.name }}');">{{ pr.name }}</a>
+    {% endfor %}
+  </p>
   <p>
     {{ form.openid(size=40) }}
     {% for error in form.openid.errors %}
