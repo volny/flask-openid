@@ -40,7 +40,11 @@
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav">
         <li><a href="/index">Home</a></li>
-        <li><a href="/login">Login</a></li>
+        {% if g.user.is_authenticated %}
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        {% endif %}
       </ul>
     </nav>
 
