@@ -1,1 +1,9 @@
-Create the db with `chmod a+x create_db.py`, `./create_db.py`
+- Make the scripts executable `chmod a+x <script>.py`
+
+- Run the devserver `./run.py`
+
+- Create the db `./create_db.py`
+- Migrate the db `./migrate_db.py`
+
+- If you need to record a new migration `./upgrade_db.py`
+- If you need to downgrade the db to an old format `./downgrade_db.py`

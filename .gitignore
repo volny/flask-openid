@@ -1,9 +1,9 @@
 .DS_Store
 
-*.pyc
-app/__pycache__/
-
 flask/
+
+*.pyc
+__pycache__/
 
 app.db
 db_repository/
